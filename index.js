@@ -18,16 +18,8 @@ console.log(process.env);
 
 
 //Rutas
-app.get('/',(req,res)=>{
-    res.status(400).json({
-        ok:true,
-        msg:'Hola mundo'
-    }
+app.use('/api/usuarios',require('./routes/usuarios'));
 
-    );
-
-
-});
 
 
 app.listen(process.env.PORT,()=>{
