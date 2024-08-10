@@ -10,6 +10,11 @@ const app=express();
 //CORS
 app.use(cors());
 
+
+//Lectura y parseo del body
+
+app.use(express.json());
+
 //Base de datos
 dbConection();
 console.log(process.env);
