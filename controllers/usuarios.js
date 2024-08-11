@@ -2,6 +2,8 @@ const {response} = require('express');
 const bcrypt= require('bcryptjs');
  
 const Usuario = require('../models/usuario');
+const { generarJWT } = require('../helpers/jwt');
+const { TokenExpiredError } = require('jsonwebtoken');
 
 const getUsuarios=async (req,res)=>{
 
@@ -40,14 +42,18 @@ const getUsuarios=async (req,res)=>{
       const salt=bcrypt.genSaltSync();
       usuario.password=bcrypt.hashSync(password,salt);
 
+
+
       //Guardar usuario
 
       await usuario.save();
+      const token=await generarJWT(usuario.id);
   
   
       res.json({
           ok:true,
-          usuario
+          usuario,
+          token
        }
    
        );
