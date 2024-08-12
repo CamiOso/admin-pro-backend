@@ -10,7 +10,8 @@ const getUsuarios=async (req,res)=>{
   const usuarios=await Usuario.find({},'nombre email role google');
     res.json({
         ok:true,
-        usuarios
+        usuarios,
+     
         
      }
  
