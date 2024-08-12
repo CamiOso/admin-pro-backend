@@ -11,6 +11,7 @@ const HospitalSchema=Schema({
     },
     usuario:{
         
+        required:true,
         type:Schema.Types.ObjectId,
         ref:'Usuario'
     }
@@ -27,3 +28,4 @@ HospitalSchema.method('toJSON',function(){
 });
 
 module.exports=model('Hospital',HospitalSchema);
+
