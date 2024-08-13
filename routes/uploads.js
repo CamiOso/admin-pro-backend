@@ -5,7 +5,7 @@ ruta: /api/uploads/
 const {Router}=require('express');
 const expressFileUplod=require('express-fileupload');
 const {validarJWT}=require('../middlewares/validar-jwt');
-const { fileUplod } = require('../controllers/uploads');
+const { fileUplod,retornaImagen } = require('../controllers/uploads');
  
 
 
@@ -14,6 +14,7 @@ const { fileUplod } = require('../controllers/uploads');
 
  router.use(expressFileUplod());
  router.put('/:tipo/:id',validarJWT,fileUplod);
+ router.get('/:tipo/:foto',retornaImagen);
  
 
 

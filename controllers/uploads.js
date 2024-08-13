@@ -1,3 +1,6 @@
+const path=require('path');
+const fs=require('fs');
+
 const { response } = require("express");
 
 const {v7:uuidv7}=require('uuid');
@@ -91,6 +94,34 @@ const fileUplod=(req,res=response)=>{
 }
 
 
+
+
+const retornaImagen=(req,res=response)=>{
+    const tipo=req.params.tipo;
+    const foto=req.params.foto;
+
+    
+   const pathImg=path.join(__dirname,`../uploads/${tipo}/${foto}`);
+   //Imagen por defecto
+
+   if(fs.existsSync(pathImg)){
+  res.sendFile(pathImg);
+   }else{
+     const pathImg=path.join(__dirname,`../uploads/no-image.jpg`);
+     res.sendFile(pathImg);
+
+
+   }
+
+
+
+
+  
+
+}
+
+
 module.exports={
     fileUplod,
+    retornaImagen
 }
