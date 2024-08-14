@@ -9,14 +9,13 @@ const googleVerify = async( token ) => {
         audience: process.env.GOOGLE_ID,  
     });
     const payload = ticket.getPayload();
-    //const userid = payload['sub'];
+  
 
-    console.log(payload);
+ const { name, email, picture } = payload;
 
 
-    return payload;
-  // If request specified a G Suite domain:
-  // const domain = payload['hd'];
+    return { name, email, picture };
+
 }
 
 module.exports = {
