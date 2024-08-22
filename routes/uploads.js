@@ -13,7 +13,7 @@ const { fileUplod,retornaImagen } = require('../controllers/uploads');
  const router=Router();
 
  router.use(expressFileUplod());
- router.put('/:tipo/:id',validarJWT,fileUplod);
+ router.put('/:tipo/:id',fileUplod);
  router.get('/:tipo/:foto',retornaImagen);
  
 
